@@ -1,0 +1,2 @@
+body {background: rgb(235, 235, 235);}
+#addCSS:after {content: 'test.css is added.';}

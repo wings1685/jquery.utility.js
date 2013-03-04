@@ -1,0 +1,84 @@
+<!DOCTYPE HTML> 
+<html lang='ja'> 
+<head> 
+	<meta charset='UTF-8'> 
+	<meta name='viewport' content='width=device-width'> 
+	<title>jquery.utility.js</title>
+	<script src='http://code.jquery.com/jquery-1.8.3.min.js'></script>
+	<script src='jquery.utility.js'></script>
+	<script>
+		$(function() {
+			var isMobile = $().isMobile(true);
+			$('body')
+				.find('#create')
+					.create('div', {'class': 'create_div'})
+					.find('div:last')
+						.create('input', {id: 'create_input', 'placeholder/title/value': 'Fill in your name'})
+						.end()
+					.create('a', {id: 'a', href: 'http://jquery.com/', 'title/html': 'A', data: {href: 'http://jquery.com/', tag: function() {return 'a';}}, css: {color: 'rgb(255, 0, 0)', 'font-size': function() {return '1.2em';}}})
+					.end()
+				.find('#tx1').tx('tx1').end()
+				.find('#tx2').tx('tx2').end()
+				.find('#results')
+					.create('p', {'title/text': function() {
+						return 'href: ' + $('#a').data('href') + ', tag: ' + $('#a').data('tag');
+					}})
+					.create('p', {'title/text': 'tx1_title: ' + $('#tx1').attr('title') + ' tx1_html: ' + $('#tx1').html()})
+					.create('p', {'title/text': 'tx2_title: ' + $('#tx2').attr('title') + ' tx2_placeholder: ' + $('#tx2').attr('placeholder')})
+					.create('p', {id: 'result_changeClass', 'title/text': 'className: ' + $('#changeClass').attr('class')})
+					.create('p', {'title/text': 'mobile: ' + $().isMobile()})
+					.create('p', {'title/text': 'iPhone: ' + $().isMobile('iPhone')})
+					.create('p', {'title/text': 'iPad: ' + $().isMobile('iPad')})
+					.create('p', {'title/text': 'iPod: ' + $().isMobile('iPod')})
+					.create('p', {'title/text': 'iOS: ' + isMobile.iOS})
+					.create('p', {id: 'result_isMail', 'title/text': 'isMail: false'})
+					.addJS('sample.js')
+					.create('p', {id: 'addJS'})
+					.addCSS('sample.css')
+					.create('p', {id: 'addCSS'})
+					.print(isMobile)
+					.print()
+			;
+			$(document)
+				.on('click', '#changeClass', function() {
+					$(this).changeClass('blue', 'red');
+					$('#result_changeClass').tx('className: ' + $('#changeClass').attr('class'));
+				})
+				.on('keyup', '#isMail', function() {
+					$('#result_isMail').tx('isMail: ' + $('#isMail').isMail());
+				})
+				.on('click', '#btn_doScroll1', function() {
+					$().doScroll('#btn_doScroll2');
+				})
+				.on('click', '#btn_doScroll2', function() {
+					$().doScroll();
+				})
+			;
+		});
+	</script>
+	<style>
+		p {
+			margin: 0px;
+			padding: 0px;
+		}
+		#targets {padding-bottom: 20px;}
+		input, button {display: block;}
+		#doScroll {margin-top: 2000px;}
+		.blue {color: rgb(0, 102, 255);}
+		.red {color: rgb(200, 0, 0);}
+	</style>
+</head>
+<body>
+	<div id="targets">
+		<div id="create"></div>
+		<p id="tx1"></p>
+		<input id="tx2" type="text" />
+		<input id="changeClass" type="button" class="blue" value="changeClass" />
+		<input id="isMail" type="text" placeholder="mail" />
+		<button id="btn_doScroll1">doScroll down</button>
+	</div>
+	<p>Results</p>
+	<div id="results"></div>
+	<div id="doScroll"><button id="btn_doScroll2">doScroll up</button>
+</body> 
+</html>

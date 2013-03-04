@@ -1,0 +1,1 @@
+$('#addJS').tx('test.js is added.');
