@@ -1,6 +1,7 @@
 $.fn.extend({
 	create: function(a, b) {
 		var e = document.createElement(a), $t = $(this)[0];
+		if (!$t) return this;
 		if (b) {
 			for (var i in b) {
 				var p = i.split('/'), s = typeof(b[i]) == 'function' ? b[i]() : b[i];
