@@ -1,3 +1,11 @@
+/**
+ * jQuery Utility v1.0.4
+ * http://flugel.biz/
+ *
+ * Licensed under the MIT license.
+ * Copyright 2013 Yutaka Imagawa
+ */
+
 $.fn.extend({
 	create: function(a, b) {
 		var e = document.createElement(a), $t = $(this)[0];
