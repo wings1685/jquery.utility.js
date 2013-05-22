@@ -86,7 +86,7 @@ $.fn.extend({
 		return s.match(/^[A-Za-z0-9]+[\w-_.]+@[\w\.-]+\.\w{2,}$/) ? true : false;
 	},
 	doScroll: function(t) {
-		var s = t !== undefined ? ($(t).position()).top : 0;
+		var s = t !== undefined ? ($(t).offset()).top : 0;
 		$().isMobile() ? window.scroll(0, s) : $('html,body').animate({scrollTop: s}, 500);
 		return this;
 	},
