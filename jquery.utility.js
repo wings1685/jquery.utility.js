@@ -13,7 +13,7 @@ $.fn.extend({
 		if (b) {
 			for (var i in b) {
 				var p = i.split('/'), s = typeof(b[i]) == 'function' ? b[i]() : b[i];
-				for (var x = 0; x < p.length; x++) {
+				for (var x = 0, l = p.length; x < l; x++) {
 					switch (p[x]) {
 						case 'css':
 							for (var c in b[p[x]]) {
@@ -61,7 +61,7 @@ $.fn.extend({
 		a = a.split(' '), b = b.split(' ');
 		var $t = $(this)[0];
 		var c = $t.className.split(' '), n, m, f;
-		for (var i = 0; i < c.length; i++) {
+		for (var i = 0, l = c.length; i < l; i++) {
 			if ((m = $.inArray(c[i], a)) != -1 || (n = $.inArray(c[i], b)) != -1) {
 				c.splice(i, 1);
 				i--;
