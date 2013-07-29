@@ -83,20 +83,15 @@ $.fn.extend({
 		return this;
 	},
 	doScroll: function(t) {
-		var s = t !== undefined ? ($(t).offset()).top : 0;
-		$.isMobile() ? window.scroll(0, s) : $('html,body').animate({scrollTop: s}, 500);
+		$.doScroll(t);
 		return this;
 	},
 	addJS: function(s) {
-		var e = document.createElement('script');
-		e.type = 'text/javascript', e.src = s;
-		$('head')[0].appendChild(e);
+		$.addJS(s);
 		return this;
 	},
 	addCSS: function(s) {
-		var e = document.createElement('link');
-		e.type = 'text/css', e.rel = 'stylesheet', e.href = s;
-		$('head')[0].appendChild(e);
+		$.addCSS(s);
 		return this;
 	}
 });
