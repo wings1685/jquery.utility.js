@@ -8,7 +8,7 @@
 
 $.fn.extend({
 	create: function(a, b) {
-		var e = document.createElement(a), $t = $(this)[0];
+		var e = document.createElement(a), $t = $(this)[0], px = ['width', 'height', 'font-size'], v;
 		if (!$t) return this;
 		if (b) {
 			for (var i in b) {
@@ -17,7 +17,9 @@ $.fn.extend({
 					switch (p[x]) {
 						case 'css':
 							for (var c in b[p[x]]) {
-								e.style[c] = typeof(b[p[x]][c]) == 'function' ? b[p[x]][c]() : b[p[x]][c];
+								v = typeof(b[p[x]][c]) == 'function' ? b[p[x]][c]() : b[p[x]][c];
+								if (!isNaN(e.style[c]) && $.inArray(c, px) != -1) v += 'px';
+								e.style[c] = v;
 							}
 							break;
 						case 'data':
