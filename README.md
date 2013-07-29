@@ -184,4 +184,4 @@ Chrome/Safari/Firefox/Opera/IE8+
 iPhone/iPad/iPod touch/Android
 
 
-このプラグインがお役に立てれば幸いです。
+このプラグインがお役に立てば幸いです。
