@@ -90,12 +90,12 @@ _.isMobile()_ は、アクセスしたデバイスがモバイルかどうかを
 * true：iPhone/iPad/iPod/iOS であるかの結果を Object 形式で返します。
 
 ### 使用例
-	var isMobile = $().isMobile(true);
+	var isMobile = $.isMobile(true);
 	$('#isMobile')
-		.create('p', {'title/text': 'mobile: ' + $().isMobile()})
-		.create('p', {'title/text': 'iPhone: ' + $().isMobile('iPhone')})
-		.create('p', {'title/text': 'iPad: ' + $().isMobile('iPad')})
-		.create('p', {'title/text': 'iPod: ' + $().isMobile('iPod')})
+		.create('p', {'title/text': 'mobile: ' + $.isMobile()})
+		.create('p', {'title/text': 'iPhone: ' + $.isMobile('iPhone')})
+		.create('p', {'title/text': 'iPad: ' + $.isMobile('iPad')})
+		.create('p', {'title/text': 'iPod: ' + $.isMobile('iPod')})
 		.create('p', {'title/text': 'iOS: ' + isMobile.iOS})
 	;
 
@@ -122,41 +122,44 @@ _.doScroll()_ は、画面スクロールを行います。
 
 ### 引数 _target_
 引数 _target_ が以下の場合、次のような挙動になります。
+なお、$().doScroll としても機能するので、メソッドチェインの中であっても有効です。
 
 * 与えられている場合： _target_ の場所を position() で取得し、スクロールします。
 * 与えられない場合：ページの一番上（x: 0, y: 0）へスクロールします。
 
-$().mobile() で true と判定された場合は、上記の場所へのスムーススクロールのアニメーション無しのジャンプになります。
+$.mobile() で true と判定された場合は、上記の場所へのスムーススクロールのアニメーション無しのジャンプになります。
 
 ### 使用例
 	$(document)
 		.on('click', '#btn_doScroll1', function() {
-			$().doScroll('#btn_doScroll2');
+			$.doScroll('#btn_doScroll2');
 		})
 		.on('click', '#btn_doScroll2', function() {
-			$().doScroll();
+			$.doScroll();
 		})
 	;
 
 
 ## _.addJS(file)_
 _.addJS()_ は、head 要素の一番最後に JavaScript ファイルを追加します。
+なお、$().addJS としても機能するので、メソッドチェインの中であっても有効です。
 
 ### 引数 _file_
 読み込みたい JavaScript のファイル名を定義します。
 
 ### 使用例
-	$().addJS('./test.js');
+	$.addJS('./test.js');
 
 
 ## _.addCSS(file)_
 _.addCSS()_ は、head 要素の一番最後に CSS ファイルを追加します。
+なお、$().addCSS としても機能するので、メソッドチェインの中であっても有効です。
 
 ### 引数 _file_
 読み込みたい CSS のファイル名を定義します。
 
 ### 使用例
-	$().addCSS('./test.css');
+	$.addCSS('./test.css');
 
 
 ## _.print(target)_

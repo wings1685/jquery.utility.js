@@ -73,23 +73,18 @@ $.fn.extend({
 		if (f) $t.className = c.length == 0 ? b : c.join(' ') + ' ' + b;
 		return this;
 	},
-	isMobile: function(m) {
-		var u = ['iPhone', 'iPad', 'iPod', 'Android'], d = {
-			mobile: (new RegExp(u.join('|'), 'i')).test(navigator.userAgent) ? true : false,
-			iPhone: (new RegExp(u[0], 'i')).test(navigator.userAgent) ? true : false,
-			iPad: (new RegExp(u[1], 'i')).test(navigator.userAgent) ? true : false,
-			iPod: (new RegExp(u[2], 'i')).test(navigator.userAgent) ? true : false
-		};
-		d.iOS = (d.iPhone || d.iPad || d.iPod) ? true : false;
-		return m === true ? d : m ? d[m] : d.mobile;
-	},
 	isMail: function(s){
 		var s = s !== undefined ? s : $(this).val()
 		return s.match(/^[A-Za-z0-9]+[\w-_.]+@[\w\.-]+\.\w{2,}$/) ? true : false;
 	},
+	print: function(p) {
+		if (!window.console) return this;
+		p !== undefined ? console.log(p) : console.log($(this));
+		return this;
+	},
 	doScroll: function(t) {
 		var s = t !== undefined ? ($(t).offset()).top : 0;
-		$().isMobile() ? window.scroll(0, s) : $('html,body').animate({scrollTop: s}, 500);
+		$.isMobile() ? window.scroll(0, s) : $('html,body').animate({scrollTop: s}, 500);
 		return this;
 	},
 	addJS: function(s) {
@@ -103,10 +98,34 @@ $.fn.extend({
 		e.type = 'text/css', e.rel = 'stylesheet', e.href = s;
 		$('head')[0].appendChild(e);
 		return this;
+	}
+});
+$.extend({
+	isMobile: function(m) {
+		var u = ['iPhone', 'iPad', 'iPod', 'Android'], d = {
+			mobile: (new RegExp(u.join('|'), 'i')).test(navigator.userAgent) ? true : false,
+			iPhone: (new RegExp(u[0], 'i')).test(navigator.userAgent) ? true : false,
+			iPad: (new RegExp(u[1], 'i')).test(navigator.userAgent) ? true : false,
+			iPod: (new RegExp(u[2], 'i')).test(navigator.userAgent) ? true : false
+		};
+		d.iOS = (d.iPhone || d.iPad || d.iPod) ? true : false;
+		return m === true ? d : m ? d[m] : d.mobile;
 	},
-	print: function(p) {
-		if (!window.console) return this;
-		p !== undefined ? console.log(p) : console.log($(this));
+	doScroll: function(t) {
+		var s = t !== undefined ? ($(t).offset()).top : 0;
+		$.isMobile() ? window.scroll(0, s) : $('html,body').animate({scrollTop: s}, 500);
+		return this;
+	},
+	addJS: function(s) {
+		var e = document.createElement('script');
+		e.type = 'text/javascript', e.src = s;
+		$('head')[0].appendChild(e);
+		return this;
+	},
+	addCSS: function(s) {
+		var e = document.createElement('link');
+		e.type = 'text/css', e.rel = 'stylesheet', e.href = s;
+		$('head')[0].appendChild(e);
 		return this;
 	}
 });

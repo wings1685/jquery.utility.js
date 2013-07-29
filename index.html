@@ -8,7 +8,7 @@
 	<script src='jquery.utility.js'></script>
 	<script>
 		$(function() {
-			var isMobile = $().isMobile(true);
+			var isMobile = $.isMobile(true);
 			$('body')
 				.find('#create')
 					.create('div', {'class': 'create_div'})
@@ -26,10 +26,10 @@
 					.create('p', {'title/text': 'tx1_title: ' + $('#tx1').attr('title') + ' tx1_html: ' + $('#tx1').html()})
 					.create('p', {'title/text': 'tx2_title: ' + $('#tx2').attr('title') + ' tx2_placeholder: ' + $('#tx2').attr('placeholder')})
 					.create('p', {id: 'result_changeClass', 'title/text': 'className: ' + $('#changeClass').attr('class')})
-					.create('p', {'title/text': 'mobile: ' + $().isMobile()})
-					.create('p', {'title/text': 'iPhone: ' + $().isMobile('iPhone')})
-					.create('p', {'title/text': 'iPad: ' + $().isMobile('iPad')})
-					.create('p', {'title/text': 'iPod: ' + $().isMobile('iPod')})
+					.create('p', {'title/text': 'mobile: ' + $.isMobile()})
+					.create('p', {'title/text': 'iPhone: ' + $.isMobile('iPhone')})
+					.create('p', {'title/text': 'iPad: ' + $.isMobile('iPad')})
+					.create('p', {'title/text': 'iPod: ' + $.isMobile('iPod')})
 					.create('p', {'title/text': 'iOS: ' + isMobile.iOS})
 					.create('p', {id: 'result_isMail', 'title/text': 'isMail: false'})
 					.addJS('sample.js')
@@ -48,10 +48,10 @@
 					$('#result_isMail').tx('isMail: ' + $('#isMail').isMail());
 				})
 				.on('click', '#btn_doScroll1', function() {
-					$().doScroll('#btn_doScroll2');
+					$.doScroll('#btn_doScroll2');
 				})
 				.on('click', '#btn_doScroll2', function() {
-					$().doScroll();
+					$.doScroll();
 				})
 			;
 		});
