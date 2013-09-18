@@ -50,6 +50,7 @@ $.fn.extend({
 	tx: function(s) {
 		var $e = $(this)[0], t = ['text', 'search', 'url', 'tel'];
 		if (!$e) return this;
+		if (typeof(s) == 'function') s = s();
 		if ($e.tagName == 'IMG' || ($e.tagName == 'INPUT' && $e.type == 'image')) {
 			$e.title = s, $e.alt = s;
 		} else if (($e.tagName == 'INPUT' && $.inArray($e.type, t) != -1) || $e.tagName == 'TEXTAREA') {
